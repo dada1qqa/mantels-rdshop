@@ -1,0 +1,34 @@
+╔═╗╦ ╦╔═╗╔╦╗   ╔═╗╔═╗╦═╗╔═╗╔═╗╔═╗
+  ║║ ║╚═╗ ║ ═══╚═╗║  ╠╦╝╠═╣╠═╝║╣ 
+╚═╝╚═╝╚═╝ ╩    ╚═╝╚═╝╩╚═╩ ╩╩  ╚═╝
+made with ♥ from scrapegraphai team
+v1.1.0
+
+Docs: https://docs.scrapegraphai.com/api-reference/scrape
+[90m│[39m
+[34m●[39m  Using API key from SGAI_API_KEY env var
+[?25l[90m│[39m
+[35m◒[39m  Scraping[999D[J[35m◐[39m  Scraping[999D[J[35m◓[39m  Scraping[999D[J[35m◑[39m  Scraping[999D[J[35m◒[39m  Scraping[999D[J[35m◐[39m  Scraping[999D[J[35m◓[39m  Scraping[999D[J[35m◑[39m  Scraping[999D[J[35m◒[39m  Scraping.[999D[J[35m◐[39m  Scraping.[999D[J[35m◓[39m  Scraping.[999D[J[35m◑[39m  Scraping.[999D[J[35m◒[39m  Scraping.[999D[J[35m◐[39m  Scraping.[999D[J[35m◓[39m  Scraping.[999D[J[35m◑[39m  Scraping.[999D[J[35m◒[39m  Scraping..[999D[J[35m◐[39m  Scraping..[999D[J[35m◓[39m  Scraping..[999D[J[35m◑[39m  Scraping..[999D[J[35m◒[39m  Scraping..[999D[J[35m◐[39m  Scraping..[999D[J[35m◓[39m  Scraping..[999D[J[35m◑[39m  Scraping..[999D[J[35m◒[39m  Scraping...[999D[J[35m◐[39m  Scraping...[999D[J[35m◓[39m  Scraping...[999D[J[35m◑[39m  Scraping...[999D[J[35m◒[39m  Scraping...[999D[J[35m◐[39m  Scraping...[999D[J[35m◓[39m  Scraping...[999D[J[32m◇[39m  Done in 2.4s
+[?25h
+{
+  "id": "8d594408-801c-4640-b63a-1955adf8a30c",
+  "results": {
+    "json": {
+      "data": {},
+      "metadata": {
+        "raw": null,
+        "chunker": {
+          "chunks": [
+            {
+              "size": 1673
+            }
+          ]
+        }
+      }
+    }
+  },
+  "metadata": {
+    "contentType": "text/html"
+  }
+}
+

@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="es" prefix="og: https://ogp.me/ns#">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YEVLSS3514"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YEVLSS3514');
+  gtag('config', 'G-HGM3PHTSS2');
+  gtag('config', 'AW-11379092525');
+
+  gtag('config', 'GT-TQDCSG4');
+  gtag('config', 'GT-57Z92KK');
+  gtag('config', 'AW-18479448521');
+  // Conversión Google Ads: clic en WhatsApp o llamar (cuenta BIOS Computer 995-255-5349)
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if (!a) return;
+    var h = a.getAttribute('href') || '';
+    if (/wa\.me|whatsapp\.com|^whatsapp:|^tel:/i.test(h)) {
+      gtag('event', 'conversion', { 'send_to': 'AW-18479448521/2ldLCPzW2osdEMmD2OtE', 'value': 1.0, 'currency': 'USD' });
+    }
+  }, true);
+
+ 
+
+  
+</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1988968942008401');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1988968942008401&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+ <!-- TikTok Pixel Code Start -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+
+
+  ttq.load('D9DB5RJC77U79CKF4ASG');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+<!-- TikTok Pixel Code End -->
+<link rel="icon" type="image/png" sizes="96x96" href="https://www.bios.do/wp-content/themes/bios-v3/assets/img/favicon/favicon-96x96.png?v=1790204814">
+<link rel="icon" type="image/svg+xml" href="https://www.bios.do/wp-content/themes/bios-v3/assets/img/favicon/favicon.svg?v=1790204814">
+<link rel="shortcut icon" href="https://www.bios.do/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="https://www.bios.do/wp-content/themes/bios-v3/assets/img/favicon/apple-touch-icon.png?v=1790204814">
+<link rel="manifest" href="https://www.bios.do/wp-content/themes/bios-v3/assets/img/favicon/site.webmanifest?v=1790205037">
+<meta name="color-scheme" content="light">
+<script type="importmap">{"imports":{"https://www.bios.do/wp-content/themes/bios-v3/assets/js/404.js":"https://www.bios.do/wp-content/themes/bios-v3/assets/js/404.js?ver=1790700019","https://www.bios.do/wp-content/themes/bios-v3/assets/js/categoria.js":"https://www.bios.do/wp-content/themes/bios-v3/assets/js/categoria.js?ver=1790712992","https://www.bios.do/wp-content/themes/bios-v3/assets/js/core.js":"https://www.bios.do/wp-content/themes/bios-v3/assets/js/core.js?ver=1790712992","https://www.bios.do/wp-content/themes/bios-v3/assets/js/forms.js":"https://www.bios.do/wp-content/themes/bios-v3/assets/js/forms.js?ver=1790712992","https://www.bios.do/wp-content/themes/bios-v3/assets/js/home.js":"https://www.bios.do/wp-content/themes/bios-v3/assets/js/home.js?ver=1790712992","https://www.bios.do/wp-content/themes/bios-v3/assets/js/producto.js":"https://www.bios.do/wp-content/themes/bios-v3/assets/js/producto.js?ver=1790712992","https://www.bios.do/wp-content/themes/bios-v3/assets/js/site.js":"https://www.bios.do/wp-content/themes/bios-v3/assets/js/site.js?ver=1790939721"}}</script>
+
+<!-- Optimización para motores de búsqueda de Rank Math -  https://rankmath.com/ -->
+<title>Page Not Found - Bios Computer</title>
+<meta name="robots" content="follow, noindex"/>
+<meta property="og:locale" content="es_DO" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Page Not Found - Bios Computer" />
+<meta property="og:site_name" content="Bios Computer" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Page Not Found - Bios Computer" />
+<script type="application/ld+json" class="rank-math-schema">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.bios.do/#organization","name":"Bios Computer","url":"https://www.bios.do"},{"@type":"WebSite","@id":"https://www.bios.do/#website","url":"https://www.bios.do","name":"Bios Computer","publisher":{"@id":"https://www.bios.do/#organization"},"inLanguage":"es"},{"@type":"BreadcrumbList","@id":"#breadcrumb","itemListElement":[{"@type":"ListItem","position":"1","item":{"@id":"https://www.bios.do","name":"Inicio"}}]},{"@type":"WebPage","@id":"#webpage","url":"","name":"Page Not Found - Bios Computer","isPartOf":{"@id":"https://www.bios.do/#website"},"inLanguage":"es","breadcrumb":{"@id":"#breadcrumb"}}]}</script>
+<!-- /Plugin Rank Math WordPress SEO -->
+
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<style id="bios-boot-css">#bios-boot{position:fixed;inset:0;z-index:89;display:grid;place-items:center;background:#fff;overflow:hidden;animation:bios-boot-out .3s 8s forwards}#bios-boot .bb{--w:min(408px,84vw);--h:calc(var(--w) * 169 / 567);position:relative;width:var(--w);height:var(--h)}#bios-boot .bb img{position:absolute;inset:0;z-index:2;width:100%;height:100%;opacity:0;animation:bios-entero 1s linear infinite both}@keyframes bios-entero{0%,49%{opacity:0}51%,90%{opacity:1}92%,100%{opacity:0}}#bios-boot .bb i{position:absolute;left:calc(var(--w) * var(--c) / 14);top:calc(var(--h) * var(--r) / 4);width:calc(var(--w) / 14 + 1px);height:calc(var(--h) / 4 + 1px);background:var(--logo) no-repeat;background-size:var(--w) var(--h);background-position:calc(var(--w) * var(--c) / -14) calc(var(--h) * var(--r) / -4);animation:bios-cubo 1s cubic-bezier(.2,.8,.25,1) var(--d) infinite both;will-change:transform,opacity}@keyframes bios-cubo{0%{opacity:0;transform:translate(var(--dx),var(--dy)) rotate(var(--rot)) scale(.2)}35%{opacity:1;transform:none}92%{opacity:1;transform:none}100%{opacity:0;transform:translate(calc(var(--dx) / 3),calc(var(--dy) / 3)) rotate(calc(var(--rot) / 3)) scale(.4)}}@keyframes bios-boot-out{to{opacity:0;visibility:hidden}}body.is-ready #bios-boot{pointer-events:none;animation:bios-boot-out .2s forwards}@media (prefers-reduced-motion:reduce){#bios-boot .bb i{display:none}#bios-boot .bb img{animation:none;opacity:1}}</style>
+<script id="bios-tiktok-pixel">
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+  ttq.load("DB248SRC77U5HCCK5JEG");
+  // El tema carga otro píxel (D9DB5…) en el mismo ttq: se usa la instancia para no duplicarle visitas ni eventos.
+  ttq.instance("DB248SRC77U5HCCK5JEG").page();
+}(window, document, 'ttq');
+</script>
+	<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+
+<style id="woocommerce-inline-inline-css">
+.woocommerce form .form-row .required { visibility: visible; }
+/*# sourceURL=woocommerce-inline-inline-css */
+</style>
+<link rel='stylesheet' id='bios-v3-fonts-css' href='https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&#038;display=swap' media='all' />
+<link rel='stylesheet' id='bios-v3-css' href='https://www.bios.do/wp-content/themes/bios-v3/assets/css/bios.css?ver=1790939721' media='all' />
+<link rel='stylesheet' id='bios-v3-compat-css' href='https://www.bios.do/wp-content/themes/bios-v3/assets/css/wp-compat.css?ver=1789763442' media='all' />
+<link rel="https://api.w.org/" href="https://www.bios.do/wp-json/" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.bios.do/xmlrpc.php?rsd" />
+	<noscript><style>.woocommerce-product-gallery{ opacity: 1 !important; }</style></noscript>
+	<style id="wp-custom-css">
+/* Sin animacion de carga (pedido 29-09) */
+#bios-boot{display:none!important}
+/* El texto para Google (seo-ssr) no se ve mientras carga la web; sin JavaScript si se ve */
+@media (scripting: enabled){.seo-ssr{display:none!important}}
+
+</style>
+</head>
+<body class="error404 wp-theme-bios-v3 theme-bios-v3 woocommerce-no-js bios-v3" data-page="404">
+<div id="bios-boot" aria-hidden="true"><div class="bb" style="--logo:url(https://www.bios.do/wp-content/themes/bios-v3/assets/img/logo-bios.png)"><img src="https://www.bios.do/wp-content/themes/bios-v3/assets/img/logo-bios.png" alt="" width="408"><i style="--c:0;--r:0;--dx:5px;--dy:-82px;--rot:256deg;--d:0.002s"></i><i style="--c:1;--r:0;--dx:114px;--dy:-96px;--rot:239deg;--d:0.012s"></i><i style="--c:2;--r:0;--dx:99px;--dy:-66px;--rot:-112deg;--d:0.033s"></i><i style="--c:3;--r:0;--dx:-125px;--dy:-59px;--rot:-231deg;--d:0.043s"></i><i style="--c:4;--r:0;--dx:129px;--dy:-89px;--rot:-251deg;--d:0.059s"></i><i style="--c:5;--r:0;--dx:-129px;--dy:27px;--rot:102deg;--d:0.080s"></i><i style="--c:6;--r:0;--dx:-137px;--dy:22px;--rot:-164deg;--d:0.072s"></i><i style="--c:7;--r:0;--dx:116px;--dy:-90px;--rot:233deg;--d:0.094s"></i><i style="--c:8;--r:0;--dx:-68px;--dy:-94px;--rot:-185deg;--d:0.082s"></i><i style="--c:9;--r:0;--dx:-128px;--dy:24px;--rot:-248deg;--d:0.095s"></i><i style="--c:10;--r:0;--dx:112px;--dy:-11px;--rot:209deg;--d:0.117s"></i><i style="--c:11;--r:0;--dx:72px;--dy:-28px;--rot:153deg;--d:0.133s"></i><i style="--c:12;--r:0;--dx:-36px;--dy:-100px;--rot:224deg;--d:0.134s"></i><i style="--c:13;--r:0;--dx:15px;--dy:66px;--rot:163deg;--d:0.147s"></i><i style="--c:0;--r:1;--dx:-123px;--dy:-90px;--rot:132deg;--d:0.023s"></i><i style="--c:1;--r:1;--dx:-83px;--dy:118px;--rot:197deg;--d:0.011s"></i><i style="--c:2;--r:1;--dx:-121px;--dy:75px;--rot:177deg;--d:0.041s"></i><i style="--c:3;--r:1;--dx:144px;--dy:7px;--rot:107deg;--d:0.056s"></i><i style="--c:4;--r:1;--dx:-22px;--dy:1px;--rot:-105deg;--d:0.062s"></i><i style="--c:5;--r:1;--dx:-2px;--dy:45px;--rot:162deg;--d:0.072s"></i><i style="--c:6;--r:1;--dx:17px;--dy:-115px;--rot:180deg;--d:0.065s"></i><i style="--c:7;--r:1;--dx:-101px;--dy:6px;--rot:-145deg;--d:0.093s"></i><i style="--c:8;--r:1;--dx:-94px;--dy:69px;--rot:-191deg;--d:0.091s"></i><i style="--c:9;--r:1;--dx:94px;--dy:-100px;--rot:-204deg;--d:0.101s"></i><i style="--c:10;--r:1;--dx:-18px;--dy:106px;--rot:-200deg;--d:0.126s"></i><i style="--c:11;--r:1;--dx:-18px;--dy:60px;--rot:181deg;--d:0.130s"></i><i style="--c:12;--r:1;--dx:34px;--dy:-61px;--rot:-111deg;--d:0.124s"></i><i style="--c:13;--r:1;--dx:-42px;--dy:48px;--rot:-93deg;--d:0.144s"></i><i style="--c:0;--r:2;--dx:141px;--dy:-74px;--rot:162deg;--d:0.000s"></i><i style="--c:1;--r:2;--dx:54px;--dy:16px;--rot:246deg;--d:0.027s"></i><i style="--c:2;--r:2;--dx:-96px;--dy:56px;--rot:-206deg;--d:0.048s"></i><i style="--c:3;--r:2;--dx:126px;--dy:-20px;--rot:192deg;--d:0.042s"></i><i style="--c:4;--r:2;--dx:86px;--dy:42px;--rot:105deg;--d:0.046s"></i><i style="--c:5;--r:2;--dx:-54px;--dy:-8px;--rot:-118deg;--d:0.060s"></i><i style="--c:6;--r:2;--dx:-134px;--dy:-94px;--rot:-235deg;--d:0.064s"></i><i style="--c:7;--r:2;--dx:-109px;--dy:-27px;--rot:-108deg;--d:0.096s"></i><i style="--c:8;--r:2;--dx:154px;--dy:-24px;--rot:-252deg;--d:0.087s"></i><i style="--c:9;--r:2;--dx:17px;--dy:34px;--rot:211deg;--d:0.093s"></i><i style="--c:10;--r:2;--dx:89px;--dy:-1px;--rot:213deg;--d:0.109s"></i><i style="--c:11;--r:2;--dx:-87px;--dy:-94px;--rot:157deg;--d:0.124s"></i><i style="--c:12;--r:2;--dx:-78px;--dy:12px;--rot:-142deg;--d:0.148s"></i><i style="--c:13;--r:2;--dx:110px;--dy:-28px;--rot:-266deg;--d:0.145s"></i><i style="--c:0;--r:3;--dx:-147px;--dy:74px;--rot:254deg;--d:0.027s"></i><i style="--c:1;--r:3;--dx:-27px;--dy:12px;--rot:132deg;--d:0.021s"></i><i style="--c:2;--r:3;--dx:-46px;--dy:16px;--rot:252deg;--d:0.027s"></i><i style="--c:3;--r:3;--dx:-61px;--dy:86px;--rot:-192deg;--d:0.053s"></i><i style="--c:4;--r:3;--dx:-44px;--dy:-69px;--rot:181deg;--d:0.062s"></i><i style="--c:5;--r:3;--dx:-146px;--dy:82px;--rot:210deg;--d:0.057s"></i><i style="--c:6;--r:3;--dx:149px;--dy:-32px;--rot:179deg;--d:0.089s"></i><i style="--c:7;--r:3;--dx:26px;--dy:-100px;--rot:-116deg;--d:0.076s"></i><i style="--c:8;--r:3;--dx:-60px;--dy:-34px;--rot:-213deg;--d:0.098s"></i><i style="--c:9;--r:3;--dx:152px;--dy:95px;--rot:-212deg;--d:0.117s"></i><i style="--c:10;--r:3;--dx:16px;--dy:84px;--rot:-259deg;--d:0.103s"></i><i style="--c:11;--r:3;--dx:38px;--dy:80px;--rot:-212deg;--d:0.136s"></i><i style="--c:12;--r:3;--dx:62px;--dy:82px;--rot:112deg;--d:0.143s"></i><i style="--c:13;--r:3;--dx:42px;--dy:-2px;--rot:111deg;--d:0.151s"></i></div></div>
+<div data-chrome="header"></div>
+<main id="main" tabindex="-1">
+  <div class="wrap notice notice--error" data-404></div>
+</main>
+<div data-chrome="footer"></div>
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/bios-v3/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+	<script>
+		(function () {
+			var c = document.body.className;
+			c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
+			document.body.className = c;
+		})();
+	</script>
+	<script id="bios-v3-404-js-extra">
+var BIOS_WP = {"home":"https://www.bios.do/","shop":"https://www.bios.do/shop/","assets":"https://www.bios.do/wp-content/themes/bios-v3/assets","themeUri":"https://www.bios.do/wp-content/themes/bios-v3","catalogUrl":"https://www.bios.do/wp-json/bios-v3/v1/catalog","tallerUrl":"https://www.bios.do/wp-json/bios-v3/v1/taller","productBase":"https://www.bios.do/shop/","pages":{"taller":"https://www.bios.do/taller/","financiamiento":"https://www.bios.do/financiamiento/","sucursales":"https://www.bios.do/sucursales/","garantia":"https://www.bios.do/garantia/","garantiaRefurbished":"https://www.bios.do/garantia-refurbished/"},"productId":"0","initialQuery":""};
+//# sourceURL=bios-v3-404-js-extra
+</script>
+<script type="module" data-wp-strategy="defer" defer id="bios-v3-404-js" src="https://www.bios.do/wp-content/themes/bios-v3/assets/js/404.js?ver=1790700019"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"https://www.bios.do/wp-includes/js/wp-emoji-release.min.js?ver=7.1.3"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof HTMLScriptElement))throw new Error("Element missing: "+e);const r=JSON.parse(t.text),s=(window._wpemojiSettings=r,"wpEmojiSettingsSupports"),o=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(s,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const r=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===r[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,r){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!r(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,r){let a;const s=(a="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),o=(s.textBaseline="top",s.font="600 32px Arial",{});return e.forEach(e=>{o[e]=t(s,e,n,r)}),o}function a(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}r.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(s));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(o),u.toString(),c.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"});const a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=e=>{i(n=e.data),a.terminate(),t(n)})}catch(e){}i(n=f(o,u,c,p))}t(n)}).then(e=>{for(const n in e)r.supports[n]=e[n],r.supports.everything=r.supports.everything&&r.supports[n],"flag"!==n&&(r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&r.supports[n]);var t;r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&!r.supports.flag,r.supports.everything||((t=r.source||{}).concatemoji?a(t.concatemoji):t.wpemoji&&t.twemoji&&(a(t.twemoji),a(t.wpemoji)))});
+//# sourceURL=https://www.bios.do/wp-includes/js/wp-emoji-loader.min.js
+</script>
+<script id="bios-footer-politicas">
+(function(){
+  var URL = "https:\/\/www.bios.do\/politica-de-devoluciones\/";
+  function add(){
+    if (document.querySelector('a.bios-link-devoluciones')) return true;
+    var titles = document.querySelectorAll('.footer .footer__title');
+    for (var k = 0; k < titles.length; k++) {
+      if (/servicios/i.test(titles[k].textContent)) {
+        var ul = titles[k].parentNode.querySelector('ul');
+        if (!ul) return false;
+        var li = document.createElement('li');
+        li.innerHTML = '<a class="bios-link-devoluciones" href="' + URL + '">Devoluciones</a>';
+        ul.appendChild(li);
+        return true;
+      }
+    }
+    return false;
+  }
+  if (add()) return;
+  var mo = new MutationObserver(function(){ if (add()) mo.disconnect(); });
+  mo.observe(document.body, { childList: true, subtree: true });
+})();
+</script>
+	<script id="bios-pv-menu">
+(function(){
+  var URL = "https:\/\/www.bios.do\/promos-en-video\/";
+  function add(){
+    var l = document.querySelector('.catnav__list');
+    if (!l || l.querySelector('[data-bios-pv]')) return;
+    var li = document.createElement('li');
+    li.className = 'catnav__group';
+    li.setAttribute('data-bios-pv', '1');
+    li.innerHTML = '<a class="catnav__link catnav__link--mobile" href="' + URL + '">Promos en Video</a>' +
+                   '<a class="catnav__link bios-pv-link" href="' + URL + '">Promos en Video</a>';
+    l.appendChild(li);
+  }
+  new MutationObserver(add).observe(document.body, {childList: true, subtree: true});
+  add();
+})();
+</script>
+<style>.bios-pv-link{text-decoration:none}</style>
+    <script id="bios-tiktok-eventos">
+(function(){
+  var ITEM = null;
+  var ID = "DB248SRC77U5HCCK5JEG";
+  function tt(){
+    if (!window.ttq || typeof window.ttq.instance !== 'function') return;
+    var px = window.ttq.instance(ID);
+    px.track.apply(px, arguments);
+  }
+  function datos(){
+    if (!ITEM) return {};
+    var d = { contents: [{ content_id: ITEM.content_id, content_type: 'product', content_name: ITEM.content_name }],
+              content_type: 'product' };
+    if (ITEM.value) { d.value = ITEM.value; d.currency = ITEM.currency; }
+    return d;
+  }
+  if (ITEM) tt('ViewContent', datos());
+  // Clic en WhatsApp: el tema pinta los botones con JS, así que se escucha en todo el documento
+  var ultimo = 0;
+  document.addEventListener('click', function(e){
+    var a = e.target && e.target.closest && e.target.closest('a[href]');
+    if (!a || !/wa\.me|whatsapp\.com|^whatsapp:/i.test(a.getAttribute('href') || '')) return;
+    if (Date.now() - ultimo < 1500) return;   // evita duplicados por doble clic
+    ultimo = Date.now();
+    // En una ficha: Contact con el equipo (lo que usa el catálogo). En otras páginas no hay equipo, y un
+    // Contact sin content_id le baja la calidad al píxel en TikTok: se registra como ClickButton.
+    if (ITEM) tt('Contact', datos());
+    else tt('ClickButton', { description: 'WhatsApp' });
+  }, true);
+})();
+</script>
+	<script id="bios-tracking">
+(function(){
+  var ITEM = null;
+  var CUR = 'DOP';
+  function gt(){ if (typeof window.gtag === 'function') window.gtag.apply(null, arguments); }
+  function fb(){ if (typeof window.fbq === 'function') window.fbq.apply(null, arguments); }
+  function gaItem(){ return { id: ITEM.id, item_id: ITEM.id, item_name: ITEM.name, item_brand: ITEM.brand,
+                               price: ITEM.price, quantity: 1, google_business_vertical: 'retail' }; }
+
+  // Remarketing dinámico de Google: ver ficha
+  if (ITEM) gt('event', 'view_item', { currency: CUR, value: ITEM.price, items: [gaItem()] });
+
+  // Clic en WhatsApp: el tema pinta los botones con JS, así que se escucha en todo el documento
+  var last = 0;
+  document.addEventListener('click', function(e){
+    var a = e.target && e.target.closest && e.target.closest('a[href]');
+    if (!a || !/wa\.me|whatsapp\.com|^whatsapp:/i.test(a.getAttribute('href') || '')) return;
+    if (Date.now() - last < 1500) return;   // evita duplicados por doble clic
+    last = Date.now();
+    if (ITEM) {
+      fb('track', 'Contact', { content_ids: [ITEM.id], content_type: 'product', value: ITEM.price, currency: CUR });
+      gt('event', 'generate_lead', { currency: CUR, value: ITEM.price, method: 'whatsapp', items: [gaItem()] });
+    } else {
+      fb('track', 'Contact');
+      gt('event', 'generate_lead', { method: 'whatsapp' });
+    }
+  }, true);
+})();
+</script>
+	<script id="bios-sin-repetidos">
+(function(){
+  var SEL = '.bios-pv__item, .bios-vids__item, .bios-vids__slide, .card, .product-card';
+  function clave(el){
+    var v = el.querySelector('video'); var a = el.querySelector('a[href*="/producto/"]');
+    return (el.matches('.bios-pv__item, .bios-vids__item, .bios-vids__slide') && a) ? 'v:' + a.pathname : (a ? 'p:' + a.pathname : (v ? 'v:' + v.getAttribute('src') : null));
+  }
+  function limpiar(){
+    var padres = new Set();
+    document.querySelectorAll(SEL).forEach(function(el){ if (el.parentNode) padres.add(el.parentNode); });
+    padres.forEach(function(p){
+      var vistos = {};
+      [].slice.call(p.children).forEach(function(el){
+        if (!el.matches(SEL)) return;
+        var k = clave(el); if (!k) return;
+        if (vistos[k]) { el.remove(); } else { vistos[k] = 1; }
+      });
+    });
+  }
+  var t; new MutationObserver(function(){ clearTimeout(t); t = setTimeout(limpiar, 60); }).observe(document.body, {childList: true, subtree: true});
+  limpiar();
+})();
+</script>
+    <script id="bios-videos-fuera-de-vista">
+(function(){
+  if (!('IntersectionObserver' in window)) return;
+  var VISIBLE_MIN = 0.35;   // si se ve menos del 35% del video, se pausa
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      var v = e.target;
+      if (e.intersectionRatio < VISIBLE_MIN) {
+        if (!v.paused) { v.dataset.biosFuera = v.muted ? 'reanudar' : 'quieto'; v.pause(); }
+      } else if (v.dataset.biosFuera === 'reanudar' && v.muted && !document.hidden) {
+        delete v.dataset.biosFuera;
+        var x = v.play(); if (x && x.catch) x.catch(function(){});
+      } else {
+        delete v.dataset.biosFuera;
+      }
+    });
+  }, {threshold: [0, VISIBLE_MIN, 0.6, 1]});
+  function vigilar(root){
+    (root.querySelectorAll ? root.querySelectorAll('video') : []).forEach(function(v){
+      if (v.dataset.biosVigilado) return;
+      v.dataset.biosVigilado = '1';
+      io.observe(v);
+      // si empieza a sonar estando fuera de vista (por cualquier motivo), se detiene
+      v.addEventListener('play', function(){
+        var r = v.getBoundingClientRect(), h = window.innerHeight || document.documentElement.clientHeight;
+        var visto = Math.max(0, Math.min(r.bottom, h) - Math.max(r.top, 0)) / Math.max(1, r.height);
+        if (visto < VISIBLE_MIN || document.hidden) { v.dataset.biosFuera = v.muted ? 'reanudar' : 'quieto'; v.pause(); }
+      });
+    });
+  }
+  vigilar(document);
+  new MutationObserver(function(ms){ ms.forEach(function(m){ m.addedNodes.forEach(function(n){ if (n.nodeType === 1) { if (n.tagName === 'VIDEO') { vigilar(n.parentNode || document); } else { vigilar(n); } } }); }); })
+    .observe(document.documentElement, {childList: true, subtree: true});
+  document.addEventListener('visibilitychange', function(){
+    if (document.hidden) {
+      document.querySelectorAll('video').forEach(function(v){ if (!v.paused) { v.dataset.biosFuera = v.muted ? 'reanudar' : 'quieto'; v.pause(); } });
+    }
+  });
+})();
+</script>
+    </body>
+</html>

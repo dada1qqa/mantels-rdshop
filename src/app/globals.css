@@ -1,0 +1,472 @@
+@import "tailwindcss";
+
+/* ============================================================
+   MANTELSIO RDSHOP — DESIGN TOKENS (OKLCH)
+   Modern/Tech: Deep OLED base, fuchsia/cyan/emerald accents
+   Double-bezel architecture, glassmorphism, fluid motion
+============================================================ */
+
+@theme inline {
+  /* --- Base (OLED black scale) --- */
+  --color-base-50:  oklch(98.5% 0.002 270);
+  --color-base-100: oklch(96%   0.003 270);
+  --color-base-200: oklch(90%   0.005 270);
+  --color-base-300: oklch(82%   0.01  270);
+  --color-base-400: oklch(65%   0.02  270);
+  --color-base-500: oklch(48%   0.03  270);
+  --color-base-600: oklch(35%   0.04  270);
+  --color-base-700: oklch(24%   0.03  270);
+  --color-base-800: oklch(16%   0.025 270);
+  --color-base-900: oklch(10%   0.02  270);
+  --color-base-950: oklch(4%    0.015 270);
+
+  /* --- Semantic aliases (shadcn-compatible) --- */
+  --color-background:     var(--color-base-950);
+  --color-foreground:     var(--color-base-50);
+  --color-card:           var(--color-base-900);
+  --color-card-foreground:var(--color-base-50);
+  --color-popover:        var(--color-base-900);
+  --color-popover-foreground: var(--color-base-50);
+  --color-primary:        var(--color-accent-fuchsia);
+  --color-primary-foreground: var(--color-base-950);
+  --color-secondary:      var(--color-base-800);
+  --color-secondary-foreground: var(--color-base-100);
+  --color-muted:          var(--color-base-800);
+  --color-muted-foreground: var(--color-base-400);
+  --color-accent:         var(--color-accent-cyan);
+  --color-accent-foreground: var(--color-base-950);
+  --color-destructive:    oklch(58% 0.24 27);
+  --color-destructive-foreground: var(--color-base-50);
+  --color-border:         var(--color-base-800);
+  --color-input:          var(--color-base-800);
+  --color-ring:           var(--color-accent-fuchsia);
+
+  /* --- Accent palette (Modern/Tech) --- */
+  --color-accent-fuchsia: oklch(68% 0.28 330);
+  --color-accent-cyan:    oklch(72% 0.20 195);
+  --color-accent-emerald: oklch(62% 0.22 150);
+  --color-accent-amber:   oklch(75% 0.18 85);
+
+  /* --- Typography --- */
+  --font-display: var(--font-plus-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-sans:    var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono:    var(--font-geist-mono), ui-monospace, monospace;
+
+  /* --- Radius tokens --- */
+  --radius-sm:    0.375rem;   /* 6px */
+  --radius-md:    0.5rem;     /* 8px */
+  --radius-lg:    0.75rem;    /* 12px */
+  --radius-xl:    1rem;       /* 16px */
+  --radius-2xl:   1.5rem;     /* 24px */
+  --radius-3xl:   2rem;       /* 32px — Double-bezel outer */
+  --radius-4xl:   2.5rem;     /* 40px */
+
+  /* --- Shadow tokens (elevated, diffused) --- */
+  --shadow-xs:    0 1px 2px 0 oklch(0% 0 0 / 0.08);
+  --shadow-sm:    0 2px 4px -1px oklch(0% 0 0 / 0.10), 0 1px 2px -1px oklch(0% 0 0 / 0.06);
+  --shadow-md:    0 8px 16px -4px oklch(0% 0 0 / 0.15), 0 4px 8px -4px oklch(0% 0 0 / 0.10);
+  --shadow-lg:    0 20px 40px -8px oklch(0% 0 0 / 0.20), 0 8px 16px -8px oklch(0% 0 0 / 0.12);
+  --shadow-xl:    0 32px 64px -12px oklch(0% 0 0 / 0.25), 0 12px 24px -12px oklch(0% 0 0 / 0.15);
+  --shadow-glow-fuchsia: 0 0 40px -8px oklch(68% 0.28 330 / 0.35);
+  --shadow-glow-cyan:    0 0 40px -8px oklch(72% 0.20 195 / 0.30);
+
+  /* --- Animation tokens --- */
+  --animate-fade-in:        fade-in 0.7s cubic-bezier(0.32,0.72,0,1) forwards;
+  --animate-fade-out:       fade-out 0.4s cubic-bezier(0.32,0.72,0,1) forwards;
+  --animate-slide-up:       slide-up 0.8s cubic-bezier(0.32,0.72,0,1) forwards;
+  --animate-slide-up-delay: slide-up 0.8s cubic-bezier(0.32,0.72,0,1) 0.1s forwards;
+  --animate-scale-in:       scale-in 0.6s cubic-bezier(0.32,0.72,0,1) forwards;
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes fade-out {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+  }
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes scale-in {
+    from { opacity: 0; transform: scale(0.96); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  /* --- Transition curves --- */
+  --ease-fluid:     cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-spring:    cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-expo-out:  cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ============================================================
+   BASE STYLES
+============================================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: clip;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Display font for headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+/* Selection */
+::selection {
+  background: color-mix(in oklch, var(--color-accent-fuchsia) 40%, transparent);
+  color: var(--color-base-50);
+}
+
+/* Focus visible */
+:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--color-base-950); }
+::-webkit-scrollbar-thumb { background: var(--color-base-700); border-radius: 999px; border: 2px solid var(--color-base-950); }
+::-webkit-scrollbar-thumb:hover { background: var(--color-base-600); }
+
+/* Touch targets */
+button, [role="button"], a { touch-action: manipulation; }
+
+@media (max-width: 640px) {
+  input, textarea, select { font-size: 16px; }
+}
+
+/* Safe area */
+.safe-bottom { padding-bottom: calc(2.5rem + env(safe-area-inset-bottom, 0px)); }
+
+/* Utility: scrollbar-hide */
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
+/* ============================================================
+   DOUBLE-BEZEL UTILITIES (High-end Visual Design)
+   Usage: <div class="double-bezel"> <div class="double-bezel__inner">Content</div> </div>
+============================================================ */
+
+.double-bezel {
+  position: relative;
+  border-radius: var(--radius-3xl);
+  background: linear-gradient(180deg, color-mix(in oklch, var(--color-base-900) 60%, transparent), color-mix(in oklch, var(--color-base-900) 30%, transparent));
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid var(--color-border);
+  padding: 6px; /* outer bezel thickness */
+  box-shadow: var(--shadow-lg), var(--shadow-glow-fuchsia);
+  transition: box-shadow 0.4s var(--ease-fluid), border-color 0.3s var(--ease-fluid);
+}
+.double-bezel:hover {
+  box-shadow: var(--shadow-xl), var(--shadow-glow-fuchsia), var(--shadow-glow-cyan);
+  border-color: color-mix(in oklch, var(--color-accent-fuchsia) 30%, var(--color-border));
+}
+
+.double-bezel__inner {
+  border-radius: var(--radius-2xl); /* calc(2rem - 0.375rem) concentric */
+  background: var(--color-base-900);
+  border: 1px solid color-mix(in oklch, var(--color-base-700) 40%, transparent);
+  box-shadow: inset 0 1px 1px 0 oklch(100% 0 0 / 0.08);
+  overflow: hidden;
+}
+
+/* ============================================================
+   BUTTON-IN-BUTTON (Magnetic CTA)
+   <button class="btn-magnetic"> <span>Text</span> <span class="btn-magnetic__icon">→</span> </button>
+============================================================ */
+
+.btn-magnetic {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  border-radius: 9999px;
+  padding: 1rem 2rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  letter-spacing: -0.01em;
+  background: linear-gradient(135deg, var(--color-accent-fuchsia), var(--color-accent-cyan));
+  color: var(--color-base-950);
+  box-shadow: var(--shadow-lg), var(--shadow-glow-fuchsia);
+  transition: transform 0.2s var(--ease-spring), box-shadow 0.3s var(--ease-fluid);
+  position: relative;
+  overflow: hidden;
+}
+.btn-magnetic::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--color-accent-cyan), var(--color-accent-fuchsia));
+  opacity: 0;
+  transition: opacity 0.3s var(--ease-fluid);
+}
+.btn-magnetic:hover::before { opacity: 1; }
+.btn-magnetic:active { transform: scale(0.97); }
+.btn-magnetic:focus-visible { outline-offset: 4px; }
+
+.btn-magnetic > span { position: relative; z-index: 1; }
+
+.btn-magnetic__icon {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem; height: 2rem;
+  border-radius: 9999px;
+  background: color-mix(in oklch, var(--color-base-950) 15%, transparent);
+  transition: transform 0.3s var(--ease-spring), background 0.2s var(--ease-fluid), box-shadow 0.2s var(--ease-fluid);
+  box-shadow: inset 0 1px 1px 0 oklch(100% 0 0 / 0.12);
+}
+.group:hover .btn-magnetic__icon {
+  transform: translateX(4px) scale(1.05);
+  background: color-mix(in oklch, var(--color-base-950) 25%, transparent);
+  box-shadow: 0 0 12px -2px oklch(68% 0.28 330 / 0.5);
+}
+
+/* ============================================================
+   ENTRY ANIMATIONS (Staggered)
+============================================================ */
+
+.reveal { opacity: 0; animation: var(--animate-slide-up); }
+.reveal-delay-1 { animation-name: var(--animate-slide-up-delay); }
+.reveal-delay-2 { animation-name: var(--animate-slide-up-delay); animation-delay: 0.2s; }
+.reveal-delay-3 { animation-name: var(--animate-slide-up-delay); animation-delay: 0.3s; }
+.reveal-delay-4 { animation-name: var(--animate-slide-up-delay); animation-delay: 0.4s; }
+.reveal-scale { animation: var(--animate-scale-in); }
+
+/* ============================================================
+   GLASS / RADIAL GRADIENT BACKGROUND (Hero sections)
+============================================================ */
+
+.bg-mesh {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 0%, oklch(68% 0.28 330 / 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at 80% 100%, oklch(72% 0.20 195 / 0.10) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 40% at 50% 50%, oklch(62% 0.22 150 / 0.06) 0%, transparent 70%),
+    var(--color-base-950);
+}
+
+/* ============================================================
+   PRODUCT CARD SPECIFIC (Double-bezel + aspect-video + magnetic image)
+============================================================ */
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+}
+.product-card__media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  background: var(--color-base-800);
+}
+.product-card__image {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s var(--ease-expo-out), filter 0.4s var(--ease-fluid);
+}
+.product-card:hover .product-card__image {
+  transform: scale(1.05);
+  filter: saturate(1.15) contrast(1.05);
+}
+.product-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem 0.25rem 0.25rem;
+}
+.product-card__category {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent-fuchsia);
+  padding: 0.25rem 0.625rem;
+  border-radius: 9999px;
+  background: color-mix(in oklch, var(--color-accent-fuchsia) 12%, transparent);
+  border: 1px solid color-mix(in oklch, var(--color-accent-fuchsia) 25%, transparent);
+  width: fit-content;
+}
+.product-card__name {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2.5vw, 1.125rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-foreground);
+  transition: color 0.2s var(--ease-fluid);
+}
+.product-card:hover .product-card__name { color: var(--color-accent-fuchsia); }
+.product-card__desc {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--color-muted-foreground);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.product-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+.product-card__price {
+  font-family: var(--font-display);
+  font-size: clamp(1.125rem, 3vw, 1.375rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--color-accent-fuchsia), var(--color-accent-cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.product-card__stock {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--color-accent-emerald);
+}
+.product-card__stock--oos { color: var(--color-destructive); }
+
+/* ============================================================
+   PRODUCT PAGE (Hero full-width + info stack)
+============================================================ */
+
+.product-hero {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-3xl);
+  overflow: hidden;
+  background: var(--color-base-900);
+}
+.product-hero__image {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.product-hero__gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, var(--color-base-950) 100%);
+  pointer-events: none;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.product-info__header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.product-info__category {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent-fuchsia);
+  padding: 0.375rem 1rem;
+  border-radius: 9999px;
+  background: color-mix(in oklch, var(--color-accent-fuchsia) 10%, transparent);
+  border: 1px solid color-mix(in oklch, var(--color-accent-fuchsia) 20%, transparent);
+  width: fit-content;
+}
+.product-info__name {
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  background: linear-gradient(135deg, var(--color-foreground), var(--color-base-300));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.product-info__desc {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-muted-foreground);
+  max-width: 65ch;
+}
+.product-info__price {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--color-accent-fuchsia), var(--color-accent-cyan), var(--color-accent-emerald));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.product-info__stock {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-accent-emerald);
+}
+.product-info__stock--oos { color: var(--color-destructive); }
+.product-info__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+}
+@media (min-width: 768px) {
+  .product-info__actions { flex-direction: row; }
+}

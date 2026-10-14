@@ -1,0 +1,16 @@
+﻿{
+  "mcp": {
+    "metricool": {
+      "type": "remote",
+      "url": "https://ai.metricool.com/mcp"
+    },
+    "supabase": {
+      "type": "remote",
+      "url": "https://mcp.supabase.com/mcp"
+    },
+    "vercel": {
+      "type": "remote",
+      "url": "https://mcp.vercel.com"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "skills": {
+    "anti-bot-scraping": {
+      "source": "thirdwatch-dev/scraping-skills",
+      "sourceType": "github",
+      "skillPath": "skills/anti-bot-scraping/SKILL.md",
+      "computedHash": "6742c63c7c83dcb393f6bf6b817cf3203f21c83dad9a2de770fbd2e2e34911c8"
+    },
+    "web-scraping": {
+      "source": "ginlix-ai/langalpha",
+      "sourceType": "github",
+      "skillPath": "plugins/alternative_data/skills/web-scraping/SKILL.md",
+      "computedHash": "67358a6a251ba2c48607a0c131f2a59d693729c93fc187f98f3ab400bc3bf987"
+    }
+  }
+}
