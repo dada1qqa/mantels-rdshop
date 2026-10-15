@@ -1,8 +1,6 @@
 'use client'
 
-import { createContext, useContext, useEffect, useState, ReactNode } from 'react'
-
-type Theme = 'light' | 'dark' | 'system'
+import { createContext, useEffect, useState, useRef } from 'react'
 
 interface ThemeContextType {
   theme: 'light' | 'dark' | 'system'
@@ -11,8 +9,6 @@ interface ThemeContextType {
 }
 
 const ThemeContext = createContext<ThemeContextType | null>(null)
-
-const THEME_KEY = 'mantels-theme'
 
 function applyTheme(theme: 'light' | 'dark' | 'system'): 'light' | 'dark' {
   if (typeof window === 'undefined') return 'dark'
@@ -36,16 +32,19 @@ function applyTheme(theme: 'light' | 'dark' | 'system'): 'light' | 'dark' {
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<'light' | 'dark' | 'system'>('system')
   const [resolved, setResolved] = useState<'light' | 'dark'>('dark')
-  const [mounted, setMounted] = useState(false)
+  const initializedRef = useRef(false)
 
   // Initialize on mount
   useEffect(() => {
-    const stored = localStorage.getItem('mantels-theme')
-    const initialTheme = (stored && ['light', 'dark', 'system'].includes(stored)) ? stored as 'light' | 'dark' | 'system' : 'system'
-    
-    setThemeState(initialTheme)
-    const resolved = applyTheme(initialTheme)
-    setResolved(resolved)
+    if (!initializedRef.current) {
+      initializedRef.current = true
+      const stored = localStorage.getItem('mantels-theme')
+      const initialTheme = (stored && ['light', 'dark', 'system'].includes(stored)) ? stored as 'light' | 'dark' | 'system' : 'system'
+      
+      setThemeState(initialTheme)
+      const resolvedTheme = applyTheme(initialTheme)
+      setResolved(resolvedTheme)
+    }
   }, [])
 
   // Listen for system theme changes

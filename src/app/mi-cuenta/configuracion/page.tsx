@@ -11,11 +11,13 @@ export default async function ConfiguracionPage() {
   if (!user) redirect('/login')
 
   // Obtener o crear perfil
-  let { data: profile, error } = await supabase
+  const { data: initialProfile, error } = await supabase
     .from('profiles')
     .select('*')
     .eq('id', user.id)
     .single()
+
+  let profile = initialProfile
 
   // Si no existe perfil, crearlo
   if (error || !profile) {
@@ -70,7 +72,6 @@ export default async function ConfiguracionPage() {
         <SettingsClient 
           initialProfile={profile!}
           userId={user.id}
-          userEmail={user.email || ''}
         />
       </main>
 

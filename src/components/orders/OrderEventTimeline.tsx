@@ -1,7 +1,7 @@
 'use client'
 
 import { format } from 'date-fns'
-import { es } from 'date-fns/locale'
+import { es, Locale } from 'date-fns/locale'
 
 interface OrderEvent {
   id: string
@@ -16,7 +16,7 @@ interface OrderEvent {
   is_estimated: boolean
   is_range: boolean
   tolerance_days: number | null
-  metadata: Record<string, any>
+  metadata: Record<string, unknown>
   created_at: string
 }
 
@@ -248,7 +248,7 @@ const STATUS_LABELS: Record<string, { label: string; icon: string }> = {
   cancelada: { label: 'Cancelada', icon: '⚫' },
 }
 
-function formatDateRange(start: string, end: string | null, isRange: boolean, locale: any): string {
+function formatDateRange(start: string, end: string | null, isRange: boolean, locale: Locale): string {
   const startDate = new Date(start + 'T00:00:00')
   if (!isRange || !end) {
     return format(startDate, 'd MMM yyyy', { locale })

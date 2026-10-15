@@ -1,8 +1,9 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { format, formatDistanceToNow } from 'date-fns'
+import { useState, useEffect, useCallback } from 'react'
+import { formatDistanceToNow } from 'date-fns'
 import { es } from 'date-fns/locale'
+import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 
 interface Notification {
@@ -14,7 +15,7 @@ interface Notification {
   action_url: string | null
   created_at: string
   request_id: string | null
-  metadata: Record<string, any>
+  metadata: Record<string, unknown>
 }
 
 export function NotificationBell() {
@@ -23,20 +24,17 @@ export function NotificationBell() {
   const [unreadCount, setUnreadCount] = useState(0)
   const [loading, setLoading] = useState(true)
   const supabase = createClient()
+  const router = useRouter()
 
-  useEffect(() => {
-    fetchNotifications()
-    // Poll each 30 segundos
-    const interval = setInterval(fetchNotifications, 30000)
-    return () => clearInterval(interval)
-  }, [])
-
-  async function fetchNotifications() {
+  const fetchNotifications = useCallback(async () => {
     try {
+      const { data: { user } } = await supabase.auth.getUser()
+      if (!user) return
+
       const { data, error } = await supabase
         .from('notifications')
         .select('*')
-        .eq('user_id', (await supabase.auth.getUser()).data.user?.id)
+        .eq('user_id', user.id)
         .order('created_at', { ascending: false })
         .limit(20)
 
@@ -49,7 +47,16 @@ export function NotificationBell() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [supabase])
+
+  useEffect(() => {
+    // Initial fetch - runs once on mount
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    fetchNotifications()
+    // Poll each 30 segundos
+    const interval = setInterval(fetchNotifications, 30000)
+    return () => clearInterval(interval)
+  }, [fetchNotifications])
 
   async function markAsRead(ids: string[]) {
     try {
@@ -69,10 +76,13 @@ export function NotificationBell() {
 
   async function markAllAsRead() {
     try {
+      const { data: { user } } = await supabase.auth.getUser()
+      if (!user) return
+
       const { error } = await supabase
         .from('notifications')
         .update({ read: true, read_at: new Date().toISOString() })
-        .eq('user_id', (await supabase.auth.getUser()).data.user?.id)
+        .eq('user_id', user.id)
         .eq('read', false)
 
       if (!error) {
@@ -89,7 +99,7 @@ export function NotificationBell() {
       markAsRead([notification.id])
     }
     if (notification.action_url) {
-      window.location.href = notification.action_url
+      router.push(notification.action_url)
     }
     setOpen(false)
   }

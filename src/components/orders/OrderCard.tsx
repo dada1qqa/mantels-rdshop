@@ -82,7 +82,6 @@ export function OrderCard({
 }: OrderCardProps) {
   const statusConfig = STATUS_CONFIG[status] || { label: status, icon: '❓', color: 'text-zinc-400', bg: 'bg-zinc-500/10' }
   const typeIcon = TYPE_ICONS[type] || '📦'
-  const isActive = !['entregada', 'rechazada', 'cancelada'].includes(status)
   const isCompleted = status === 'entregada'
 
   return (

@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useEffect, useState, ReactNode } from 'react'
+import { createContext, useContext, useEffect, useState, useRef, ReactNode } from 'react'
 import { createClient } from '@/lib/supabase/client'
 
 export interface UserPreferences {
@@ -54,14 +54,6 @@ interface PreferencesContextType {
 const PreferencesContext = createContext<PreferencesContextType | null>(null)
 
 // Default preferences for immediate theme application
-const DEFAULT_PREFS: UserPreferences = {
-  theme: 'system',
-  language: 'es-DO',
-  currency: 'DOP',
-  date_format: 'DD/MM/YYYY',
-  time_format: '24h',
-}
-
 const THEME_KEY = 'mantels-theme'
 
 function getInitialTheme(): 'light' | 'dark' | 'system' {
@@ -90,7 +82,7 @@ export function PreferencesProvider({ children }: { children: ReactNode }) {
   const [profile, setProfile] = useState<UserProfile | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [themeApplied, setThemeApplied] = useState(false)
+  const initializedRef = useRef(false)
 
   const supabase = createClient()
 
@@ -101,7 +93,9 @@ export function PreferencesProvider({ children }: { children: ReactNode }) {
     console.log('[Theme] Initial theme from storage:', initialTheme)
     applyTheme(initialTheme)
     localStorage.setItem(THEME_KEY, initialTheme)
-    setThemeApplied(true)
+    if (!initializedRef.current) {
+      initializedRef.current = true
+    }
   }, [])
 
   const fetchProfile = async () => {
@@ -141,7 +135,9 @@ export function PreferencesProvider({ children }: { children: ReactNode }) {
   }
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchProfile()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   // Listen for system theme changes
@@ -157,10 +153,6 @@ export function PreferencesProvider({ children }: { children: ReactNode }) {
     mediaQuery.addEventListener('change', handleChange)
     return () => mediaQuery.removeEventListener('change', handleChange)
   }, [])
-
-  const fetchAndApply = async () => {
-    await fetchProfile()
-  }
 
   const updatePreferences = async (prefs: Partial<UserPreferences>) => {
     if (!profile) return

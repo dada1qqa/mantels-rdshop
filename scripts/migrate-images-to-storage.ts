@@ -2,8 +2,6 @@
  * Descarga imágenes externas, súbelas a Supabase Storage y actualiza la BD
  */
 import { createClient } from '@supabase/supabase-js'
-import fs from 'fs'
-import path from 'path'
 import https from 'https'
 import http from 'http'
 
@@ -131,8 +129,8 @@ async function main() {
 
       console.log(`   ✅ Subida: ${publicUrl}`)
       ok++
-    } catch (e: any) {
-      console.log(`   ❌ Error: ${e.message}`)
+    } catch (e: unknown) {
+      console.log(`   ❌ Error: ${e instanceof Error ? e.message : String(e)}`)
       fail++
     }
   }

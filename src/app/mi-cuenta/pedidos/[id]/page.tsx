@@ -6,6 +6,7 @@ import { OrderEventTimeline } from '@/components/orders/OrderEventTimeline'
 import { Glow } from '@/components/Glow'
 import { SiteNav } from '@/components/SiteNav'
 import { Footer } from '@/components/Footer'
+import Image from 'next/image'
 
 interface PageProps {
   params: Promise<{ id: string }>
@@ -71,7 +72,13 @@ export default async function PedidoDetallePage({ params }: PageProps) {
                 <div className="flex gap-4">
                   <div className="relative flex-shrink-0 w-24 h-24 rounded-xl overflow-hidden bg-base-800">
                     {request.image_url ? (
-                      <img src={request.image_url} alt={request.product_name} className="w-full h-full object-cover" />
+                      <Image
+                        src={request.image_url}
+                        alt={request.product_name}
+                        fill
+                        className="object-cover"
+                        sizes="96px"
+                      />
                     ) : (
                       <div className="flex h-full w-full items-center justify-center text-base-500 text-3xl">
                         {getTypeIcon(request.type)}
@@ -209,7 +216,7 @@ export default async function PedidoDetallePage({ params }: PageProps) {
                   <h2 className="font-semibold mb-4">Acciones</h2>
                   <div className="space-y-2">
                     {canAcceptPrice && (
-                      <AcceptPriceForm requestId={id} requestCode={request.request_code} phone={request.customer_phone} />
+                      <AcceptPriceForm requestCode={request.request_code} phone={request.customer_phone} />
                     )}
                     {request.status === 'esperando_pago' && (
                       <a href={`/checkout?request=${request.request_code}`} className="btn-magnetic w-full justify-center">
@@ -283,7 +290,7 @@ function MessageForm({ requestId }: { requestId: string }) {
   )
 }
 
-function AcceptPriceForm({ requestId, requestCode, phone }: { requestId: string; requestCode: string; phone: string }) {
+function AcceptPriceForm({ requestCode, phone }: { requestCode: string; phone: string }) {
   return (
     <form action={`/api/requests/x/accept?code=${encodeURIComponent(requestCode)}&phone=${encodeURIComponent(phone)}`} method="POST">
       <button type="submit" className="w-full rounded-full bg-gradient-to-r from-emerald-600 to-cyan-600 py-2.5 text-sm font-semibold text-white">Aceptar precio</button>

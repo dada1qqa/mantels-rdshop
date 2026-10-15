@@ -3,10 +3,41 @@
 import { useState } from 'react'
 import Link from 'next/link'
 
+interface RequestDetail {
+  id: string
+  request_code: string
+  product_name: string
+  type: string
+  status: string
+  rejection_reason?: string | null
+  confirmed_price?: number | null
+  total_price?: number | null
+  price_accepted?: boolean
+}
+
+interface HistoryItem {
+  created_at: string
+  previous_status: string | null
+  new_status: string
+}
+
+interface MessageItem {
+  id: string
+  sender_role: string
+  body: string
+  created_at: string
+}
+
+interface RequestDetails {
+  request: RequestDetail
+  history: HistoryItem[]
+  messages: MessageItem[]
+}
+
 export default function ConsultarClient({ initialCode }: { initialCode: string }) {
   const [code, setCode] = useState(initialCode)
   const [phone, setPhone] = useState('')
-  const [details, setDetails] = useState<any>(null)
+  const [details, setDetails] = useState<RequestDetails | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [message, setMessage] = useState('')
   const [sent, setSent] = useState(false)
@@ -23,7 +54,7 @@ export default function ConsultarClient({ initialCode }: { initialCode: string }
 
   async function enviarMensaje() {
     if (!message.trim()) return
-    const res = await fetch(`/api/requests/${details.request.id}/messages`, {
+    const res = await fetch(`/api/requests/${details!.request.id}/messages`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ body: message, phone }),
@@ -60,14 +91,14 @@ export default function ConsultarClient({ initialCode }: { initialCode: string }
 
           <h2 className="mt-8 font-semibold">Historial</h2>
           <div className="mt-2 space-y-1 text-sm text-zinc-400">
-            {(details.history ?? []).map((h: any, i: number) => (
+            {(details.history ?? []).map((h, i) => (
               <p key={i}>{new Date(h.created_at).toLocaleString('es-DO')} — {h.previous_status ? `${h.previous_status} → ` : ''}{h.new_status}</p>
             ))}
           </div>
 
           <h2 className="mt-8 font-semibold">Mensajes</h2>
           <div className="mt-2 space-y-2">
-            {(details.messages ?? []).map((m: any, i: number) => (
+            {(details.messages ?? []).map((m, i) => (
               <div key={i} className={`rounded-2xl p-3 text-sm ${m.sender_role === 'admin' ? 'bg-cyan-500/10 ring-1 ring-cyan-500/20' : 'bg-white/5 ring-1 ring-white/10'}`}>
                 <p className="text-xs text-zinc-500">{m.sender_role === 'admin' ? 'MantelsioRDshop' : 'Tú'} · {new Date(m.created_at).toLocaleString('es-DO')}</p>
                 <p className="mt-1">{m.body}</p>

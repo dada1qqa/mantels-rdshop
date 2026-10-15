@@ -1,9 +1,7 @@
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/server'
-import { statusLabel } from '@/lib/requests/statuses'
 import { OrderCard } from '@/components/orders/OrderCard'
-import { Calendar } from '@/components/orders/Calendar'
 import { NotificationBell } from '@/components/orders/NotificationBell'
 import { Glow } from '@/components/Glow'
 import { SiteNav } from '@/components/SiteNav'
@@ -22,10 +20,12 @@ export default async function MisPedidosPage() {
     .order('created_at', { ascending: false })
 
   // Obtener eventos para el calendario y próxima actividad
+  const today = new Date()
+  const endDate = new Date(today.getTime() + 90 * 86400000)
   const { data: events } = await supabase.rpc('get_user_calendar', {
     p_user_id: user.id,
-    p_start_date: new Date().toISOString().split('T')[0],
-    p_end_date: new Date(Date.now() + 90 * 86400000).toISOString().split('T')[0]
+    p_start_date: today.toISOString().split('T')[0],
+    p_end_date: endDate.toISOString().split('T')[0]
   })
 
   // Próxima actividad
@@ -118,8 +118,8 @@ export default async function MisPedidosPage() {
                   {...request}
                   index={index}
                   next_event={calendarEvents
-                    .filter((e: { request_id: string }) => e.request_id === request.id)
-                    .sort((a: any, b: any) => new Date(a.event_date).getTime() - new Date(b.event_date).getTime())[0] || null
+                    .filter((e: { request_id: string; event_date: string }) => e.request_id === request.id)
+                    .sort((a: { event_date: string }, b: { event_date: string }) => new Date(a.event_date).getTime() - new Date(b.event_date).getTime())[0] || null
                   }
                 />
               ))}
@@ -132,7 +132,7 @@ export default async function MisPedidosPage() {
           <section className="mt-12 reveal delay-5">
             <h2 className="text-xl font-bold mb-4">Actividad reciente</h2>
             <div className="space-y-2">
-              {recentActivity.slice(0, 5).map((activity: any, i: number) => (
+              {recentActivity.slice(0, 5).map((activity: { id: string; request_id: string; product_name: string; request_code: string; event_type: string; title: string; created_at: string; body: string | null }, i: number) => (
                 <ActivityItem key={activity.id || i} activity={activity} />
               ))}
             </div>
@@ -175,7 +175,7 @@ function StatCard({ label, value, icon, color }: { label: string; value: number;
   )
 }
 
-function NextActivityCard({ activity }: { activity: any }) {
+function NextActivityCard({ activity }: { activity: { event_type: string; request_id: string; product_name: string; request_code: string; is_range: boolean; event_date: string; end_date: string | null; is_estimated: boolean } }) {
   const isPayment = activity.event_type === 'payment_requested' || activity.event_type === 'payment_received'
   const isDelivery = ['shipped', 'estimated_arrival', 'delivery_scheduled', 'delivered'].includes(activity.event_type)
   const isDigital = activity.event_type === 'digital_delivery'
@@ -236,7 +236,7 @@ function NextActivityCard({ activity }: { activity: any }) {
   )
 }
 
-function ActivityItem({ activity }: { activity: any }) {
+function ActivityItem({ activity }: { activity: { event_type: string; title: string; created_at: string; product_name: string; request_code: string; body: string | null } }) {
   const isMessage = activity.event_type === 'message'
   const icon = isMessage ? '💬' : getEventIcon(activity.event_type)
   const color = isMessage ? 'text-blue-400' : getEventColor(activity.event_type)
@@ -253,7 +253,7 @@ function ActivityItem({ activity }: { activity: any }) {
             </div>
             <p className="mt-0.5 text-sm text-zinc-400">{activity.product_name} · #{activity.request_code}</p>
             {isMessage && activity.body && (
-              <p className="mt-1 text-sm text-zinc-500 italic">"{activity.body.slice(0, 100)}..."</p>
+              <p className="mt-1 text-sm text-zinc-500 italic">{`"${activity.body.slice(0, 100)}..."`}</p>
             )}
           </div>
         </div>

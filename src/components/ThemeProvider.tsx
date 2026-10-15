@@ -1,11 +1,10 @@
 'use client'
 
-import { useEffect, useState, ReactNode } from 'react'
+import { useEffect, useState, useRef } from 'react'
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false)
-  const [theme, setThemeState] = useState<'light' | 'dark' | 'system'>('system')
-  const [resolved, setResolved] = useState<'light' | 'dark'>('dark')
+  const initializedRef = useRef(false)
 
   const applyTheme = (t: 'light' | 'dark' | 'system') => {
     let resolved: 'light' | 'dark'
@@ -21,12 +20,13 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   }
 
   useEffect(() => {
-    setMounted(true)
-    const stored = localStorage.getItem('mantels-theme') as 'light' | 'dark' | 'system' | null
-    const initial = (stored && ['light', 'dark', 'system'].includes(stored)) ? stored : 'system'
-    const resolved = applyTheme(initial)
-    setThemeState(initial)
-    setResolved(resolved)
+    if (!initializedRef.current) {
+      initializedRef.current = true
+      const stored = localStorage.getItem('mantels-theme') as 'light' | 'dark' | 'system' | null
+      const initial = (stored && ['light', 'dark', 'system'].includes(stored)) ? stored : 'system'
+      applyTheme(initial)
+      setMounted(true)
+    }
   }, [])
 
   useEffect(() => {
@@ -39,7 +39,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         document.documentElement.classList.remove('light', 'dark')
         document.documentElement.classList.add(resolved)
         document.documentElement.setAttribute('data-theme', resolved)
-        setResolved(resolved)
       }
     }
     mq.addEventListener('change', handler)

@@ -1,8 +1,9 @@
 'use client'
 
-import { useState, useMemo } from 'react'
-import { format, startOfMonth, endOfMonth, startOfWeek, endOfWeek, addDays, addMonths, subMonths, isSameMonth, isSameDay, isToday, isWithinInterval, eachDayOfInterval } from 'date-fns'
+import { useState, useMemo, useCallback } from 'react'
+import { format, startOfMonth, endOfMonth, startOfWeek, endOfWeek, addDays, addMonths, isSameMonth, isSameDay, isToday, eachDayOfInterval } from 'date-fns'
 import { es } from 'date-fns/locale'
+import { useRouter } from 'next/navigation'
 
 interface CalendarEvent {
   id: string
@@ -27,7 +28,6 @@ interface CalendarEvent {
 interface CalendarProps {
   events: CalendarEvent[]
   view?: 'month' | 'week' | 'agenda'
-  onViewChange?: (view: 'month' | 'week' | 'agenda') => void
   onEventClick?: (event: CalendarEvent) => void
   onDateClick?: (date: Date) => void
   className?: string
@@ -67,22 +67,22 @@ const TYPE_ICONS: Record<string, string> = {
 export function Calendar({ 
   events, 
   view = 'month', 
-  onViewChange, 
   onEventClick, 
   onDateClick,
   className = '',
   eventBasePath = '/mi-cuenta/pedidos'
 }: CalendarProps) {
+  const router = useRouter()
+  const [currentDate, setCurrentDate] = useState(new Date())
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null)
 
-  const handleEventClick = (event: CalendarEvent) => {
+  const handleEventClick = useCallback((event: CalendarEvent) => {
     if (onEventClick) {
       onEventClick(event)
     } else if (eventBasePath && event.request_id) {
-      window.location.href = `${eventBasePath}/${event.request_id}`
+      router.push(`${eventBasePath}/${event.request_id}`)
     }
-  }
-  const [currentDate, setCurrentDate] = useState(new Date())
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null)
+  }, [onEventClick, eventBasePath, router])
 
   // Agrupar eventos por fecha
   const eventsByDate = useMemo(() => {

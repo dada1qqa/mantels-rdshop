@@ -16,8 +16,6 @@ type Product = {
   stock: number | null;
 };
 
-const money = (n: number) => `RD$${Number(n).toLocaleString("es-DO", { minimumFractionDigits: 2 })}`;
-
 export default async function Home({
   searchParams,
 }: {

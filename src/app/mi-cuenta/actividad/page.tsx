@@ -4,6 +4,21 @@ import { Glow } from '@/components/Glow'
 import { SiteNav } from '@/components/SiteNav'
 import { Footer } from '@/components/Footer'
 
+interface ActivityItemData {
+  id: string
+  request_id: string
+  request_code: string
+  product_name: string
+  type: string
+  event_type: string
+  title: string
+  description: string | null
+  event_date: string
+  created_at: string
+  sender_role: string
+  body: string | null
+}
+
 export default async function ActividadPage() {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
@@ -30,7 +45,7 @@ export default async function ActividadPage() {
         <div className="reveal delay-1">
           {activity && activity.length > 0 ? (
             <div className="space-y-3">
-              {activity.map((item: any, index: number) => (
+              {activity.map((item: ActivityItemData, index: number) => (
                 <ActivityItem key={item.id || index} item={item} />
               ))}
             </div>
@@ -53,7 +68,7 @@ export default async function ActividadPage() {
   )
 }
 
-function ActivityItem({ item }: { item: any }) {
+function ActivityItem({ item }: { item: ActivityItemData }) {
   const isMessage = item.event_type === 'message'
   const icon = isMessage ? '💬' : getEventIcon(item.event_type)
   const color = isMessage ? 'text-blue-400' : getEventColor(item.event_type)
@@ -73,7 +88,7 @@ function ActivityItem({ item }: { item: any }) {
               <p className="mt-1 text-sm text-zinc-500">{item.description}</p>
             )}
             {isMessage && item.body && (
-              <p className="mt-1 text-sm text-zinc-500 italic">"{item.body.slice(0, 150)}{item.body.length > 150 ? '...' : ''}"</p>
+              <p className="mt-1 text-sm text-zinc-500 italic">{`"${item.body.slice(0, 150)}${item.body.length > 150 ? '...' : ''}"`}</p>
             )}
           </div>
         </div>

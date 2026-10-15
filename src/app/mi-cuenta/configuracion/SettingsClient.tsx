@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import Image from 'next/image'
 import { createClient } from '@/lib/supabase/client'
 
 interface UserProfile {
@@ -34,13 +35,18 @@ interface UserProfile {
   }
 }
 
+type SavePreferencesFn = (prefs: Partial<UserProfile['preferences']>) => Promise<void>
+type SaveNotificationsFn = (notifs: Partial<UserProfile['email_notifications']>) => Promise<void>
+type SavePrivacyFn = (privacy: Partial<UserProfile['privacy_settings']>) => Promise<void>
+type SaveProfileFn = (data: Partial<UserProfile>) => Promise<void>
+type UploadAvatarFn = (file: File) => Promise<void>
+
 interface SettingsClientProps {
   initialProfile: UserProfile
   userId: string
-  userEmail: string
 }
 
-export function SettingsClient({ initialProfile, userId, userEmail }: SettingsClientProps) {
+export function SettingsClient({ initialProfile, userId }: SettingsClientProps) {
   const supabase = createClient()
   const [profile, setProfile] = useState<UserProfile>(initialProfile)
   const [activeTab, setActiveTab] = useState<'perfil' | 'preferencias' | 'notificaciones' | 'privacidad' | 'seguridad' | 'peligro'>('perfil')
@@ -53,13 +59,11 @@ export function SettingsClient({ initialProfile, userId, userEmail }: SettingsCl
   }
 
   const applyTheme = (theme: 'light' | 'dark' | 'system') => {
-    localStorage.setItem('mantels-theme', theme)
-    let resolved: 'light' | 'dark'
-    if (theme === 'system') {
-      resolved = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-    } else {
-      resolved = theme
-    }
+    if (typeof window === 'undefined') return
+    try { window.localStorage.setItem('mantels-theme', theme) } catch { }
+    const resolved: 'light' | 'dark' = theme === 'system'
+      ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : theme
     document.documentElement.classList.remove('light', 'dark')
     document.documentElement.classList.add(resolved)
     document.documentElement.setAttribute('data-theme', resolved)
@@ -68,17 +72,12 @@ export function SettingsClient({ initialProfile, userId, userEmail }: SettingsCl
   const handleSavePreferences = async (prefs: Partial<UserProfile['preferences']>) => {
     setLoading(true)
     try {
-      if (prefs.theme) {
-        applyTheme(prefs.theme)
-      }
-
+      if (prefs.theme) applyTheme(prefs.theme)
       const { error } = await supabase
         .from('profiles')
         .update({ preferences: { ...profile.preferences, ...prefs } })
         .eq('id', userId)
-
       if (error) throw error
-
       setProfile(prev => ({ ...prev, preferences: { ...prev.preferences, ...prefs } }))
       showMessage('success', 'Preferencias guardadas')
     } catch (err) {
@@ -96,9 +95,7 @@ export function SettingsClient({ initialProfile, userId, userEmail }: SettingsCl
         .from('profiles')
         .update({ email_notifications: { ...profile.email_notifications, ...notifs } })
         .eq('id', userId)
-
       if (error) throw error
-
       setProfile(prev => ({ ...prev, email_notifications: { ...prev.email_notifications, ...notifs } }))
       showMessage('success', 'Notificaciones guardadas')
     } catch (err) {
@@ -116,9 +113,7 @@ export function SettingsClient({ initialProfile, userId, userEmail }: SettingsCl
         .from('profiles')
         .update({ privacy_settings: { ...profile.privacy_settings, ...privacy } })
         .eq('id', userId)
-
       if (error) throw error
-
       setProfile(prev => ({ ...prev, privacy_settings: { ...prev.privacy_settings, ...privacy } }))
       showMessage('success', 'Privacidad guardada')
     } catch (err) {
@@ -136,9 +131,7 @@ export function SettingsClient({ initialProfile, userId, userEmail }: SettingsCl
         .from('profiles')
         .update(data)
         .eq('id', userId)
-
       if (error) throw error
-
       setProfile(prev => ({ ...prev, ...data }))
       showMessage('success', 'Perfil guardado')
     } catch (err) {
@@ -152,6 +145,7 @@ export function SettingsClient({ initialProfile, userId, userEmail }: SettingsCl
   const handleAvatarUpload = async (file: File) => {
     setLoading(true)
     try {
+      console.log('[Avatar] Upload attempted for:', file.name, file.size, 'bytes')
       showMessage('error', 'Subida de avatar requiere configurar bucket de Storage')
     } catch (err) {
       console.error(err)
@@ -214,19 +208,19 @@ export function SettingsClient({ initialProfile, userId, userEmail }: SettingsCl
 
       <div className="double-bezel p-6 animate-fade-in">
         <div className="double-bezel__inner p-6">
-          {activeTab === 'perfil' && <PerfilTab profile={profile} onSave={handleSaveProfile} onAvatarUpload={handleAvatarUpload} userEmail={userEmail} loading={loading} />}
+          {activeTab === 'perfil' && <PerfilTab profile={profile} onSave={handleSaveProfile} onAvatarUpload={handleAvatarUpload} loading={loading} />}
           {activeTab === 'preferencias' && <PreferenciasTab profile={profile} onSave={handleSavePreferences} />}
           {activeTab === 'notificaciones' && <NotificacionesTab profile={profile} onSave={handleSaveNotifications} />}
           {activeTab === 'privacidad' && <PrivacidadTab profile={profile} onSave={handleSavePrivacy} />}
-          {activeTab === 'seguridad' && <SeguridadTab userId={userId} userEmail={userEmail} />}
-          {activeTab === 'peligro' && <PeligroTab userId={userId} />}
+          {activeTab === 'seguridad' && <SeguridadTab />}
+          {activeTab === 'peligro' && <PeligroTab />}
         </div>
       </div>
     </div>
   )
 }
 
-function PerfilTab({ profile, onSave, onAvatarUpload, userEmail, loading }: { profile: UserProfile; onSave: Function; onAvatarUpload: Function; userEmail: string; loading: boolean }) {
+function PerfilTab({ profile, onSave, onAvatarUpload, loading }: { profile: UserProfile; onSave: SaveProfileFn; onAvatarUpload: UploadAvatarFn; loading: boolean }) {
   const [name, setName] = useState(profile?.full_name || '')
   const [phone, setPhone] = useState(profile?.phone || '')
   const [address, setAddress] = useState(profile?.address || '')
@@ -237,10 +231,13 @@ function PerfilTab({ profile, onSave, onAvatarUpload, userEmail, loading }: { pr
     <div className="space-y-6 max-w-2xl">
       <div className="flex items-center gap-6">
         <div className="relative">
-          <img
-            src={profile?.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(profile?.full_name || userEmail)}&background=1a1a2e&color=fuchsia&size=128`}
+          <Image
+            src={profile?.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(profile?.full_name || '')}&background=1a1a2e&color=fuchsia&size=128`}
             alt="Avatar"
+            width={96}
+            height={96}
             className="w-24 h-24 rounded-2xl ring-2 ring-white/10"
+            unoptimized
           />
           <label className="absolute bottom-0 right-0 w-8 h-8 rounded-full bg-gradient-to-r from-fuchsia-600 to-cyan-600 flex items-center justify-center cursor-pointer hover:opacity-90 transition">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-base-950">
@@ -256,7 +253,7 @@ function PerfilTab({ profile, onSave, onAvatarUpload, userEmail, loading }: { pr
           </div>
           <div>
             <label className="block text-xs text-zinc-500 mb-1">Email</label>
-            <input type="email" value={userEmail} disabled className="w-full rounded-xl bg-white/5 px-4 py-3 text-base ring-1 ring-white/10 text-zinc-500" />
+            <input type="email" value={''} disabled className="w-full rounded-xl bg-white/5 px-4 py-3 text-base ring-1 ring-white/10 text-zinc-500" />
           </div>
         </div>
       </div>
@@ -298,11 +295,9 @@ function PerfilTab({ profile, onSave, onAvatarUpload, userEmail, loading }: { pr
   )
 }
 
-function PreferenciasTab({ profile, onSave }: { profile: UserProfile; onSave: Function }) {
+function PreferenciasTab({ profile, onSave }: { profile: UserProfile; onSave: SavePreferencesFn }) {
   const [prefs, setPrefs] = useState(profile?.preferences || { theme: 'system', language: 'es-DO', currency: 'DOP', date_format: 'DD/MM/YYYY', time_format: '24h' })
   const [loading, setLoading] = useState(false)
-
-  const handleChange = (key: string, value: string) => setPrefs((prev: typeof prefs) => ({ ...prev, [key]: value }))
 
   const handleSave = async () => {
     setLoading(true)
@@ -371,7 +366,7 @@ function PreferenciasTab({ profile, onSave }: { profile: UserProfile; onSave: Fu
       </div>
 
       <div className="flex justify-end">
-        <button onClick={async () => { setLoading(true); try { await onSave(prefs) } finally { setLoading(false) } }} disabled={loading} className="px-6 py-3 rounded-xl bg-gradient-to-r from-fuchsia-600 to-cyan-600 text-base-950 font-medium hover:opacity-90 transition disabled:opacity-50">
+        <button onClick={handleSave} disabled={loading} className="px-6 py-3 rounded-xl bg-gradient-to-r from-fuchsia-600 to-cyan-600 text-base-950 font-medium hover:opacity-90 transition disabled:opacity-50">
           {loading ? 'Guardando...' : 'Guardar preferencias'}
         </button>
       </div>
@@ -379,7 +374,7 @@ function PreferenciasTab({ profile, onSave }: { profile: UserProfile; onSave: Fu
   )
 }
 
-function NotificacionesTab({ profile, onSave }: { profile: UserProfile; onSave: Function }) {
+function NotificacionesTab({ profile, onSave }: { profile: UserProfile; onSave: SaveNotificationsFn }) {
   const [notifs, setNotifs] = useState(profile?.email_notifications || { order_updates: true, payment_reminders: true, delivery_updates: true, promotions: false, newsletter: false, security_alerts: true })
   const [loading, setLoading] = useState(false)
 
@@ -404,7 +399,7 @@ function NotificacionesTab({ profile, onSave }: { profile: UserProfile; onSave: 
           <div className="flex items-center justify-between">
             <h3 className="text-lg font-semibold">Notificaciones por email</h3>
             <label className="flex items-center gap-2 text-sm text-zinc-400 cursor-pointer">
-              <input type="checkbox" checked={Object.values(notifs).every(v => v)} onChange={e => { const val = e.target.checked; const keys = Object.keys(notifs) as (keyof typeof notifs)[]; keys.forEach(k => setNotifs((prev: typeof notifs) => ({ ...prev, [k]: val }))) }} className="rounded border-white/20 text-fuchsia-500 focus:ring-fuchsia-500" />
+              <input type="checkbox" checked={Object.values(notifs).every(v => v)} onChange={e => { const val = e.target.checked; setNotifs((prev: typeof notifs) => Object.fromEntries(Object.keys(prev).map(key => [key, val])) as typeof notifs) }} className="rounded border-white/20 text-fuchsia-500 focus:ring-fuchsia-500" />
               <span>Todas</span>
             </label>
           </div>
@@ -425,7 +420,7 @@ function NotificacionesTab({ profile, onSave }: { profile: UserProfile; onSave: 
       </div>
 
       <div className="flex justify-end">
-        <button onClick={async () => { setLoading(true); try { await onSave(notifs) } finally { setLoading(false) } }} disabled={loading} className="px-6 py-3 rounded-xl bg-gradient-to-r from-fuchsia-600 to-cyan-600 text-base-950 font-medium hover:opacity-90 transition disabled:opacity-50">
+        <button onClick={handleSave} disabled={loading} className="px-6 py-3 rounded-xl bg-gradient-to-r from-fuchsia-600 to-cyan-600 text-base-950 font-medium hover:opacity-90 transition disabled:opacity-50">
           {loading ? 'Guardando...' : 'Guardar notificaciones'}
         </button>
       </div>
@@ -433,7 +428,7 @@ function NotificacionesTab({ profile, onSave }: { profile: UserProfile; onSave: 
   )
 }
 
-function PrivacidadTab({ profile, onSave }: { profile: UserProfile; onSave: Function }) {
+function PrivacidadTab({ profile, onSave }: { profile: UserProfile; onSave: SavePrivacyFn }) {
   const [privacy, setPrivacy] = useState(profile?.privacy_settings || { profile_visibility: 'private', show_order_history: false, analytics_consent: true, marketing_consent: false })
   const [loading, setLoading] = useState(false)
 
@@ -497,7 +492,7 @@ function PrivacidadTab({ profile, onSave }: { profile: UserProfile; onSave: Func
       </div>
 
       <div className="flex justify-end">
-        <button onClick={async () => { setLoading(true); try { await onSave(privacy) } finally { setLoading(false) } }} disabled={loading} className="px-6 py-3 rounded-xl bg-gradient-to-r from-fuchsia-600 to-cyan-600 text-base-950 font-medium hover:opacity-90 transition disabled:opacity-50">
+        <button onClick={handleSave} disabled={loading} className="px-6 py-3 rounded-xl bg-gradient-to-r from-fuchsia-600 to-cyan-600 text-base-950 font-medium hover:opacity-90 transition disabled:opacity-50">
           {loading ? 'Guardando...' : 'Guardar privacidad'}
         </button>
       </div>
@@ -505,7 +500,7 @@ function PrivacidadTab({ profile, onSave }: { profile: UserProfile; onSave: Func
   )
 }
 
-function SeguridadTab({ userId, userEmail }: { userId: string; userEmail: string }) {
+function SeguridadTab() {
   const [loading, setLoading] = useState(false)
   const [currentPassword, setCurrentPassword] = useState('')
   const [newPassword, setNewPassword] = useState('')
@@ -549,7 +544,7 @@ function SeguridadTab({ userId, userEmail }: { userId: string; userEmail: string
   )
 }
 
-function PeligroTab({ userId }: { userId: string }) {
+function PeligroTab() {
   const [loading, setLoading] = useState(false)
 
   const handleExportData = async () => { setLoading(true); try { alert('Exportar datos requiere implementar endpoint de exportación') } finally { setLoading(false) } }

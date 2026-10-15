@@ -23,7 +23,7 @@ export async function SiteNav() {
         {user ? (
           <>
             <NotificationBell />
-            <UserMenu userId={user.id} signoutAction={signout} />
+            <UserMenu signoutAction={signout} />
           </>
         ) : (
           <Link href="/login" className="hover:text-zinc-100">Entrar</Link>

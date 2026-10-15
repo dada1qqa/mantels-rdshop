@@ -1,4 +1,5 @@
 import { redirect } from 'next/navigation'
+import Link from 'next/link'
 import { createClient } from '@/lib/supabase/server'
 import { createProduct, updateProduct, deleteProduct, logout } from './actions'
 type ProductDefaults = { name?: string; category?: string | null; tag?: string | null; price?: number; stock?: number | null; image_url?: string | null; source_url?: string | null; description?: string | null }
@@ -21,9 +22,9 @@ export default async function AdminPage() {
         <div className="flex items-center justify-between">
           <h1 className="text-base font-semibold">Admin — Mantelsio<span className="bg-gradient-to-r from-fuchsia-400 to-cyan-400 bg-clip-text text-transparent">RDshop</span></h1>
           <div className="flex items-center gap-2">
-          <a href="/admin/orders" className="rounded-full border border-white/10 px-4 py-1 text-xs text-zinc-300 transition hover:bg-white/10">Pedidos</a>
-          <a href="/admin/solicitudes" className="rounded-full border border-white/10 px-4 py-1 text-xs text-zinc-300 transition hover:bg-white/10">Solicitudes</a>
-          <a href="/admin/calendario" className="rounded-full border border-white/10 px-4 py-1 text-xs text-zinc-300 transition hover:bg-white/10">Calendario</a>
+          <Link href="/admin/orders" className="rounded-full border border-white/10 px-4 py-1 text-xs text-zinc-300 transition hover:bg-white/10">Pedidos</Link>
+          <Link href="/admin/solicitudes" className="rounded-full border border-white/10 px-4 py-1 text-xs text-zinc-300 transition hover:bg-white/10">Solicitudes</Link>
+          <Link href="/admin/calendario" className="rounded-full border border-white/10 px-4 py-1 text-xs text-zinc-300 transition hover:bg-white/10">Calendario</Link>
         <form action={logout}>
             <button className="rounded-full border border-white/10 px-4 py-1 text-xs text-zinc-300 transition hover:bg-white/10">Salir</button>
           </form>

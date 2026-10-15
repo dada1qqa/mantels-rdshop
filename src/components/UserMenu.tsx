@@ -5,11 +5,10 @@ import Link from 'next/link'
 import { useTheme } from '@/components/ThemeProvider'
 
 interface UserMenuProps {
-  userId: string
   signoutAction: () => Promise<void>
 }
 
-export function UserMenu({ userId, signoutAction }: UserMenuProps) {
+export function UserMenu({ signoutAction }: UserMenuProps) {
   const [open, setOpen] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
   const buttonRef = useRef<HTMLButtonElement>(null)
